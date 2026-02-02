@@ -1,0 +1,489 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mental Wellness</title>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.0/font/bootstrap-icons.css">
+
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- Navigation Header -->
+    <nav class="navbar navbar-expand-lg navbar-light fixed-top" id="mainNav">
+        <div class="container">
+            <a class="navbar-brand fw-bold" href="#hero">
+                <i class="bi bi-heart-pulse-fill me-2"></i>Mental Wellness
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="#hero">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#daily-quotes">Quotes</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#checklist">Checklist</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#mood">Mood</a>
+                    </li>
+                    <li class="nav-item" id="dashboard-nav" style="display: none;">
+                        <a class="nav-link" href="#dashboard">Dashboard</a>
+                    </li>
+                    <li class="nav-item" id="journal-nav" style="display: none;">
+                        <a class="nav-link" href="#journal">Journal</a>
+                    </li>
+                    <li class="nav-item" id="breathing-nav" style="display: none;">
+                        <a class="nav-link" href="#breathing">Breathing</a>
+                    </li>
+                </ul>
+                <div class="ms-3" id="auth-buttons">
+                    <button class="btn btn-outline-primary btn-sm me-2" onclick="openLoginModal()">Login</button>
+                    <button class="btn btn-primary btn-sm" onclick="openSignupModal()">Sign Up</button>
+                </div>
+                <div class="ms-3" id="user-menu" style="display: none;">
+                    <div class="dropdown">
+                        <button class="btn btn-outline-primary btn-sm dropdown-toggle" type="button" id="userDropdown" data-bs-toggle="dropdown">
+                            <i class="bi bi-person-circle me-1"></i><span id="username-display">User</span>
+                        </button>
+                        <ul class="dropdown-menu dropdown-menu-end">
+                            <li><a class="dropdown-item" href="#dashboard"><i class="bi bi-speedometer2 me-2"></i>Dashboard</a></li>
+                            <li><a class="dropdown-item" href="#journal"><i class="bi bi-journal-text me-2"></i>My Journal</a></li>
+                            <li><a class="dropdown-item" href="#breathing"><i class="bi bi-wind me-2"></i>Breathing Exercise</a></li>
+                            <li><hr class="dropdown-divider"></li>
+                            <li><a class="dropdown-item" href="#" onclick="logout()"><i class="bi bi-box-arrow-right me-2"></i>Logout</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+     <!-- Hero / Home Section -->
+    <section id="hero" class="hero-section">
+        <div class="container">
+            <div class="row align-items-center min-vh-100">
+                <div class="col-lg-6">
+                    <h1 class="display-3 fw-light mb-4">Welcome to Your<br><span class="fw-bold">Self-Care Journey</span></h1>
+                    <p class="lead mb-4">Take a moment for yourself. Your mental wellness matters, and we're here to support you every step of the way.</p>
+                    <a href="#daily-quotes" class="btn btn-primary btn-lg rounded-pill px-5">Begin Your Journey</a>
+                </div>
+                <div class="col-lg-6 text-center">
+                    <div class="hero-illustration">
+                        <i class="bi bi-heart-pulse-fill"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+     <!-- Daily Motivational Quotes Sections  -->
+    <section id="daily-quotes" class="py-5">
+        <div class="container">
+            <div class="row">
+                <div class="col-12 text-center mb-5">
+                    <h2 class="section-title">Daily Motivation</h2>
+                    <p class="section-subtitle">Start your day with inspiration</p>
+                </div>
+            </div>
+             <div class="row justify-content-center">
+                <div class="col-lg-8">
+                    <div class="quote-card card shadow-sm border-0">
+                        <div class="card-body p-5">
+                            <i class="bi bi-quote display-4 text-primary mb-3"></i>
+                            <p class="quote-text fs-4 fst-italic mb-4" id="quote-text">
+                                "You are enough, just as you are. Every small step you take towards self-care is a victory."
+                            </p>
+                            <div class="d-flex justify-content-between align-items-center">
+                                <button class="btn btn-outline-primary rounded-pill" onclick="getNewQuote()">
+                                    <i class="bi bi-arrow-repeat me-2"></i>New Quote
+                                </button>
+                                <small class="text-muted">— Daily Inspiration</small>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </section>
+       <!-- Check-list Section -->
+    <section id="checklist" class="py-5 bg-light">
+         <div class="container">
+            <div class="row">
+                <div class="col-12 text-center mb-5">
+                    <h2 class="section-title">Self-Care Checklist</h2>
+                    <p class="section-subtitle">Track your daily self-care activities</p>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-6 mb-4">
+                    <div class="checklist-card card shadow-sm border-0 h-100">
+                        <div class="card-body p-4">
+                            <h5 class="card-title mb-4">
+                                <i class="bi bi-check-circle-fill text-success me-2"></i>
+                                Physical Wellness
+                            </h5>
+                            <div class="checklist-items">
+                                <div class="form-check mb-3">
+                                    <input class="form-check-input" type="checkbox" id="check1">
+                                    <label class="form-check-label" for="check1">
+                                        Drank 8 glasses of water
+                                    </label>
+                                </div>
+                                <div class="form-check mb-3">
+                                    <input class="form-check-input" type="checkbox" id="check2">
+                                    <label class="form-check-label" for="check2">
+                                        Got 7-8 hours of sleep
+                                    </label>
+                                </div>
+                                <div class="form-check mb-3">
+                                    <input class="form-check-input" type="checkbox" id="check3">
+                                    <label class="form-check-label" for="check3">
+                                        Did 30 minutes of exercise
+                                    </label>
+                                </div>
+                                <div class="form-check mb-3">
+                                    <input class="form-check-input" type="checkbox" id="check4">
+                                    <label class="form-check-label" for="check4">
+                                        Ate nutritious meals
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                 <div class="col-lg-6 mb-4">
+                    <div class="checklist-card card shadow-sm border-0 h-100">
+                        <div class="card-body p-4">
+                            <h5 class="card-title mb-4">
+                                <i class="bi bi-heart-fill text-danger me-2"></i>
+                                Mental Wellness
+                            </h5>
+                            <div class="checklist-items">
+                                <div class="form-check mb-3">
+                                    <input class="form-check-input" type="checkbox" id="check5">
+                                    <label class="form-check-label" for="check5">
+                                        Practiced mindfulness or meditation
+                                    </label>
+                                </div>
+                                <div class="form-check mb-3">
+                                    <input class="form-check-input" type="checkbox" id="check6">
+                                    <label class="form-check-label" for="check6">
+                                        Spent time in nature
+                                    </label>
+                                </div>
+                                <div class="form-check mb-3">
+                                    <input class="form-check-input" type="checkbox" id="check7">
+                                    <label class="form-check-label" for="check7">
+                                        Connected with loved ones
+                                    </label>
+                                </div>
+                                <div class="form-check mb-3">
+                                    <input class="form-check-input" type="checkbox" id="check8">
+                                    <label class="form-check-label" for="check8">
+                                        Did something creative
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row mt-3">
+                <div class="col-12 text-center">
+                    <button class="btn btn-outline-secondary rounded-pill" onclick="resetChecklist()">
+                        <i class="bi bi-arrow-clockwise me-2"></i>Reset Checklist
+                    </button>
+                </div>
+            </div>
+        </div>
+
+    </section>
+
+     <!-- Current Mood Section -->
+    <section id="mood" class="py-5">
+        <div class="container">
+            <div class="row">
+                <div class="col-12 text-center mb-5">
+                    <h2 class="section-title">How Are You Feeling Today?</h2>
+                    <p class="section-subtitle">Take a moment to check in with yourself</p>
+                </div>
+            </div>
+            <div class="row justify-content-center">
+                <div class="col-lg-10">
+                    <div class="mood-grid">
+                        <div class="mood-item" data-mood="happy" onclick="selectMood('happy')">
+                            <div class="mood-icon">
+                                <i class="bi bi-emoji-heart-eyes-fill"></i>
+                            </div>
+                            <p class="mood-label">Happy</p>
+                        </div>
+                        <div class="mood-item" data-mood="calm" onclick="selectMood('calm')">
+                            <div class="mood-icon">
+                                <i class="bi bi-emoji-smile-fill"></i>
+                            </div>
+                            <p class="mood-label">Calm</p>
+                        </div>
+                        <div class="mood-item" data-mood="anxious" onclick="selectMood('anxious')">
+                            <div class="mood-icon">
+                                <i class="bi bi-emoji-neutral-fill"></i>
+                            </div>
+                            <p class="mood-label">Anxious</p>
+                        </div>
+                        <div class="mood-item" data-mood="sad" onclick="selectMood('sad')">
+                            <div class="mood-icon">
+                                <i class="bi bi-emoji-frown-fill"></i>
+                            </div>
+                            <p class="mood-label">Sad</p>
+                        </div>
+                        <div class="mood-item" data-mood="energetic" onclick="selectMood('energetic')">
+                            <div class="mood-icon">
+                                <i class="bi bi-lightning-charge-fill"></i>
+                            </div>
+                            <p class="mood-label">Energetic</p>
+                        </div>
+                        <div class="mood-item" data-mood="tired" onclick="selectMood('tired')">
+                            <div class="mood-icon">
+                                <i class="bi bi-moon-fill"></i>
+                            </div>
+                            <p class="mood-label">Tired</p>
+                        </div>
+                    </div>
+                    <div class="text-center mt-4">
+                        <div id="mood-message" class="mood-message"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </section>
+
+     <!-- Breathing Section -->
+    <section id="breathing" class="py-5" style="display: none;">
+        <div class="container">
+            <div class="row">
+                <div class="col-12 text-center mb-5">
+                    <h2 class="section-title">Breathing Exercise</h2>
+                    <p class="section-subtitle">Take a moment to breathe and find your calm</p>
+                </div>
+            </div>
+            <div class="row justify-content-center">
+                <div class="col-lg-8">
+                    <div class="breathing-container text-center">
+                        <div class="breathing-circle" id="breathing-circle">
+                            <div class="breathing-text" id="breathing-text">Breathe In</div>
+                        </div>
+                        <div class="mt-4">
+                            <button class="btn btn-primary btn-lg rounded-pill px-5" id="start-breathing-btn" onclick="startBreathingExercise()">
+                                <i class="bi bi-play-fill me-2"></i>Start Breathing Exercise
+                            </button>
+                            <button class="btn btn-outline-secondary btn-lg rounded-pill px-5 ms-2" id="stop-breathing-btn" onclick="stopBreathingExercise()" style="display: none;">
+                                <i class="bi bi-stop-fill me-2"></i>Stop
+                            </button>
+                        </div>
+                        <p class="mt-4 text-muted">Follow the circle - breathe in as it expands, breathe out as it contracts</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Dashboard Section (For Logged-in Users) -->
+    <section id="dashboard" class="py-5 bg-light" style="display: none;">
+        <div class="container">
+            <div class="row">
+                <div class="col-12 text-center mb-5">
+                    <h2 class="section-title">Welcome Back, <span id="dashboard-username">User</span>!</h2>
+                    <p class="section-subtitle">Your personal wellness dashboard</p>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-4 mb-4">
+                    <div class="card shadow-sm border-0 h-100">
+                        <div class="card-body p-4">
+                            <h5 class="card-title">
+                                <i class="bi bi-graph-up-arrow text-primary me-2"></i>Your Progress
+                            </h5>
+                            <div class="mt-3">
+                                <p class="mb-2"><strong>Mood Entries:</strong> <span id="mood-count">0</span></p>
+                                <p class="mb-2"><strong>Journal Entries:</strong> <span id="journal-count">0</span></p>
+                                <p class="mb-2"><strong>Checklist Completions:</strong> <span id="checklist-count">0</span></p>
+                                <div class="progress mt-3" style="height: 10px;">
+                                    <div class="progress-bar bg-primary" role="progressbar" id="overall-progress" style="width: 0%"></div>
+                                </div>
+                                <small class="text-muted mt-2 d-block">Overall Wellness Score</small>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 mb-4">
+                    <div class="card shadow-sm border-0 h-100">
+                        <div class="card-body p-4">
+                            <h5 class="card-title">
+                                <i class="bi bi-calendar-heart text-danger me-2"></i>Mood History
+                            </h5>
+                            <div id="mood-history-chart" class="mt-3">
+                                <p class="text-muted">Your recent moods will appear here</p>
+                                <div id="mood-history-list"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 mb-4">
+                    <div class="card shadow-sm border-0 h-100">
+                        <div class="card-body p-4">
+                            <h5 class="card-title">
+                                <i class="bi bi-lightbulb text-warning me-2"></i>Personalized Tips
+                            </h5>
+                            <div id="personalized-tips" class="mt-3">
+                                <p class="text-muted">Based on your activity, we'll provide personalized wellness tips here.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Journal Section (For Logged-in Users) -->
+    <section id="journal" class="py-5" style="display: none;">
+        <div class="container">
+            <div class="row">
+                <div class="col-12 text-center mb-5">
+                    <h2 class="section-title">My Journal</h2>
+                    <p class="section-subtitle">Express your thoughts and feelings</p>
+                </div>
+            </div>
+            <div class="row justify-content-center">
+                <div class="col-lg-8">
+                    <div class="card shadow-sm border-0 mb-4">
+                        <div class="card-body p-4">
+                            <h5 class="card-title mb-3">Write a New Entry</h5>
+                            <div class="mb-3">
+                                <label for="journal-title" class="form-label">Title</label>
+                                <input type="text" class="form-control" id="journal-title" placeholder="How are you feeling today?">
+                            </div>
+                            <div class="mb-3">
+                                <label for="journal-content" class="form-label">Your Thoughts</label>
+                                <textarea class="form-control" id="journal-content" rows="6" placeholder="Write whatever comes to mind..."></textarea>
+                            </div>
+                            <button type="button" class="btn btn-primary rounded-pill px-4" onclick="saveJournalEntry(event)">
+                                <i class="bi bi-save me-2"></i>Save Entry
+                            </button>
+                        </div>
+                    </div>
+                    <div id="journal-entries-container">
+                        <h5 class="mb-3">Previous Entries</h5>
+                        <div id="journal-entries-list">
+                            <p class="text-muted">No entries yet. Start writing to see your journal entries here.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Login Modal -->
+    <div class="modal fade" id="loginModal" tabindex="-1">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Login</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body">
+                    <form id="loginForm">
+                        <div class="mb-3">
+                            <label for="login-email" class="form-label">Email</label>
+                            <input type="email" class="form-control" id="login-email" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="login-password" class="form-label">Password</label>
+                            <input type="password" class="form-control" id="login-password" required>
+                        </div>
+                        <div class="alert alert-danger" id="login-error" style="display: none;"></div>
+                        <button type="submit" class="btn btn-primary w-100 rounded-pill">Login</button>
+                    </form>
+                    <div class="text-center mt-3">
+                        <p class="text-muted">Don't have an account? <a href="#" onclick="openSignupModal()">Sign Up</a></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Signup Modal -->
+    <div class="modal fade" id="signupModal" tabindex="-1">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Sign Up</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body">
+                    <form id="signupForm">
+                        <div class="mb-3">
+                            <label for="signup-name" class="form-label">Name</label>
+                            <input type="text" class="form-control" id="signup-name" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="signup-email" class="form-label">Email</label>
+                            <input type="email" class="form-control" id="signup-email" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="signup-password" class="form-label">Password</label>
+                            <input type="password" class="form-control" id="signup-password" required minlength="6">
+                        </div>
+                        <div class="alert alert-danger" id="signup-error" style="display: none;"></div>
+                        <button type="submit" class="btn btn-primary w-100 rounded-pill">Sign Up</button>
+                    </form>
+                    <div class="text-center mt-3">
+                        <p class="text-muted">Already have an account? <a href="#" onclick="openLoginModal()">Login</a></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer class="footer-section py-5">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-4 mb-4 mb-lg-0">
+                    <h5 class="mb-3">Mental Wellness & Self-Care</h5>
+                    <p class="text-muted">Your journey to better mental health starts with taking care of yourself, one day at a time.</p>
+                </div>
+                <div class="col-lg-4 mb-4 mb-lg-0">
+                    <h5 class="mb-3">Quick Links</h5>
+                    <ul class="list-unstyled">
+                        <li><a href="#hero" class="footer-link">Home</a></li>
+                        <li><a href="#daily-quotes" class="footer-link">Daily Quotes</a></li>
+                        <li><a href="#checklist" class="footer-link">Self-Care Checklist</a></li>
+                        <li><a href="#mood" class="footer-link">Mood Tracker</a></li>
+                       <!-- <li><a href="#breathing" class="footer-link">Breathing Exercise</a></li> -->
+                    </ul>
+                </div>
+                <div class="col-lg-4">
+                    <h5 class="mb-3">Resources</h5>
+                    <p class="text-muted">Remember: If you're experiencing a mental health crisis, please reach out to a professional or call your local emergency services.</p>
+                </div>
+            </div>
+            <hr class="my-4">
+            <div class="row">
+                <div class="col-12 text-center">
+                    <p class="text-muted mb-0">&copy; 2024 Mental Wellness & Self-Care. Created with care and compassion.</p>
+                </div>
+            </div>
+        </div>
+    </footer>
+      <script src="script.js"></script>
+</body>
+</html>
